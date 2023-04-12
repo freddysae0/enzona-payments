@@ -53,7 +53,7 @@ function config_page()
 
         // Muestra un mensaje de éxito
         echo '<div class="notice notice-success is-dismissible"><p>La configuración ha sido guardada.</p></div>';
-        examplePay();
+
 
 
 
