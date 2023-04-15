@@ -13,6 +13,7 @@
  * WC tested up to: 7.5.1
  */
 
+require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
