@@ -163,7 +163,6 @@ function init_enzona_class()
                     $order->update_status('pending', 'Transaction uuid: ' . $truuid);
 
                     // Remove cart
-                    //                  $woocommerce->cart->empty_cart();
                     return array(
                         // Return thankyou redirect
                         'result' => 'success',
@@ -213,9 +212,12 @@ function handle_payment_callback()
         $order_id = intval($result['invoice_number']);
         $order = wc_get_order($order_id);
         $thank_you_page_url = $order->get_checkout_order_received_url();
+        global $woocommerce;
 
         if ($status == 1116) {
             $order->update_status('completed', 'Transaction uuid: ' . $_GET['transaction_uuid']);
+            $woocommerce->cart->empty_cart();
+
             wp_redirect($thank_you_page_url);
         }
         if ($status == 1112) {
