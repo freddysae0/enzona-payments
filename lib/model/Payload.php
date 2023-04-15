@@ -45,17 +45,17 @@ class Payload implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Payload';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'description' => 'string',
         'currency' => 'string',
@@ -66,14 +66,15 @@ class Payload implements ModelInterface, ArrayAccess
         'return_url' => 'string',
         'cancel_url' => 'string',
         'terminal_id' => 'string',
-        'buyer_identity_code' => 'string'
+        'buyer_identity_code' => 'string',
+        'merchant_uuid' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'description' => null,
         'currency' => null,
@@ -84,7 +85,8 @@ class Payload implements ModelInterface, ArrayAccess
         'return_url' => null,
         'cancel_url' => null,
         'terminal_id' => null,
-        'buyer_identity_code' => null
+        'buyer_identity_code' => null,
+        'merchant_uuid' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class Payload implements ModelInterface, ArrayAccess
         'return_url' => 'return_url',
         'cancel_url' => 'cancel_url',
         'terminal_id' => 'terminal_id',
-        'buyer_identity_code' => 'buyer_identity_code'
+        'buyer_identity_code' => 'buyer_identity_code',
+        'merchant_uuid' => 'merchant_uuid'
     ];
 
     /**
@@ -141,7 +144,8 @@ class Payload implements ModelInterface, ArrayAccess
         'return_url' => 'setReturnUrl',
         'cancel_url' => 'setCancelUrl',
         'terminal_id' => 'setTerminalId',
-        'buyer_identity_code' => 'setBuyerIdentityCode'
+        'buyer_identity_code' => 'setBuyerIdentityCode',
+        'merchant_uuid' => 'setMerchant_uuid'
     ];
 
     /**
@@ -159,7 +163,9 @@ class Payload implements ModelInterface, ArrayAccess
         'return_url' => 'getReturnUrl',
         'cancel_url' => 'getCancelUrl',
         'terminal_id' => 'getTerminalId',
-        'buyer_identity_code' => 'getBuyerIdentityCode'
+        'buyer_identity_code' => 'getBuyerIdentityCode',
+        'merchant_uuid' => 'getMerchant_uuid'
+
     ];
 
     /**
@@ -210,9 +216,9 @@ class Payload implements ModelInterface, ArrayAccess
     const RETURN_URL_HTTPSMYMERCHANTCURETURN = 'https://mymerchant.cu/return';
     const CANCEL_URL_HTTPSMYMERCHANTCUCANCEL = 'https://mymerchant.cu/cancel';
     const TERMINAL_ID__12121 = '12121';
-    
 
-    
+
+
     /**
      * Gets allowable values of the enum
      *
@@ -225,7 +231,7 @@ class Payload implements ModelInterface, ArrayAccess
             self::CURRENCY_CUC,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -237,7 +243,7 @@ class Payload implements ModelInterface, ArrayAccess
             self::MERCHANT_OP_ID__123456789123,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -249,7 +255,7 @@ class Payload implements ModelInterface, ArrayAccess
             self::INVOICE_NUMBER__1212,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -261,7 +267,7 @@ class Payload implements ModelInterface, ArrayAccess
             self::RETURN_URL_HTTPSMYMERCHANTCURETURN,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -273,7 +279,7 @@ class Payload implements ModelInterface, ArrayAccess
             self::CANCEL_URL_HTTPSMYMERCHANTCUCANCEL,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -285,7 +291,7 @@ class Payload implements ModelInterface, ArrayAccess
             self::TERMINAL_ID__12121,
         ];
     }
-    
+
 
     /**
      * Associative array for storing property values
@@ -312,6 +318,7 @@ class Payload implements ModelInterface, ArrayAccess
         $this->container['cancel_url'] = isset($data['cancel_url']) ? $data['cancel_url'] : null;
         $this->container['terminal_id'] = isset($data['terminal_id']) ? $data['terminal_id'] : null;
         $this->container['buyer_identity_code'] = isset($data['buyer_identity_code']) ? $data['buyer_identity_code'] : null;
+        $this->container['merchant_uuid'] = isset($data['merchant_uuid']) ? $data['merchant_uuid'] : null;
     }
 
     /**
@@ -323,7 +330,7 @@ class Payload implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-//        $allowedValues = $this->getCurrencyAllowableValues();
+        //        $allowedValues = $this->getCurrencyAllowableValues();
 //        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
 //            $invalidProperties[] = sprintf(
 //                "invalid value for 'currency', must be one of '%s'",
@@ -410,6 +417,16 @@ class Payload implements ModelInterface, ArrayAccess
         return $this;
     }
 
+    public function getMerchant_uuid()
+    {
+        return $this->container['merchant_uuid'];
+    }
+    public function setMerchant_uuid($merchant_uuid)
+    {
+        $this->container['merchant_uuid'] = $merchant_uuid;
+
+        return $this;
+    }
     /**
      * Gets currency
      *
@@ -430,7 +447,7 @@ class Payload implements ModelInterface, ArrayAccess
     public function setCurrency($currency)
     {
         $allowedValues = $this->getCurrencyAllowableValues();
-//        if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
+        //        if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
 //            throw new \InvalidArgumentException(
 //                sprintf(
 //                    "Invalid value for 'currency', must be one of '%s'",
@@ -511,7 +528,7 @@ class Payload implements ModelInterface, ArrayAccess
     public function setMerchantOpId($merchant_op_id)
     {
         $allowedValues = $this->getMerchantOpIdAllowableValues();
-//        if (!is_null($merchant_op_id) && !in_array($merchant_op_id, $allowedValues, true)) {
+        //        if (!is_null($merchant_op_id) && !in_array($merchant_op_id, $allowedValues, true)) {
 //            throw new \InvalidArgumentException(
 //                sprintf(
 //                    "Invalid value for 'merchant_op_id', must be one of '%s'",
@@ -544,7 +561,7 @@ class Payload implements ModelInterface, ArrayAccess
     public function setInvoiceNumber($invoice_number)
     {
         $allowedValues = $this->getInvoiceNumberAllowableValues();
-//        if (!is_null($invoice_number) && !in_array($invoice_number, $allowedValues, true)) {
+        //        if (!is_null($invoice_number) && !in_array($invoice_number, $allowedValues, true)) {
 //            throw new \InvalidArgumentException(
 //                sprintf(
 //                    "Invalid value for 'invoice_number', must be one of '%s'",
@@ -577,7 +594,7 @@ class Payload implements ModelInterface, ArrayAccess
     public function setReturnUrl($return_url)
     {
         $allowedValues = $this->getReturnUrlAllowableValues();
-//        if (!is_null($return_url) && !in_array($return_url, $allowedValues, true)) {
+        //        if (!is_null($return_url) && !in_array($return_url, $allowedValues, true)) {
 //            throw new \InvalidArgumentException(
 //                sprintf(
 //                    "Invalid value for 'return_url', must be one of '%s'",
@@ -610,7 +627,7 @@ class Payload implements ModelInterface, ArrayAccess
     public function setCancelUrl($cancel_url)
     {
         $allowedValues = $this->getCancelUrlAllowableValues();
-//        if (!is_null($cancel_url) && !in_array($cancel_url, $allowedValues, true)) {
+        //        if (!is_null($cancel_url) && !in_array($cancel_url, $allowedValues, true)) {
 //            throw new \InvalidArgumentException(
 //                sprintf(
 //                    "Invalid value for 'cancel_url', must be one of '%s'",
@@ -643,7 +660,7 @@ class Payload implements ModelInterface, ArrayAccess
     public function setTerminalId($terminal_id)
     {
         $allowedValues = $this->getTerminalIdAllowableValues();
-//        if (!is_null($terminal_id) && !in_array($terminal_id, $allowedValues, true)) {
+        //        if (!is_null($terminal_id) && !in_array($terminal_id, $allowedValues, true)) {
 //            throw new \InvalidArgumentException(
 //                sprintf(
 //                    "Invalid value for 'terminal_id', must be one of '%s'",
@@ -749,5 +766,3 @@ class Payload implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

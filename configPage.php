@@ -3,7 +3,6 @@
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
 
 // Genera la página de configuración del plugin
-require_once(plugin_dir_path(__FILE__) . 'createEnzonaPayment.php');
 
 
 
@@ -49,6 +48,7 @@ function config_page()
     // Verifica si se ha enviado el formulario de configuración
     if (isset($_POST['enzona_configuracion_enviar'])) {
         // Guarda las variables de configuración
+        update_option('enzona_configuracion_accessToken', $_POST['enzona_configuracion_accessToken']);
         update_option('enzona_configuracion_merchantUUID', $_POST['enzona_configuracion_merchantUUID']);
 
         // Muestra un mensaje de éxito
@@ -77,13 +77,22 @@ function config_page()
             <table class="form-table">
                 <tbody>
 
-                    <tr>
-                        <th scope="row"><label for="enzona_configuracion_variable_1">Merchant UUID
-                            </label></th>
-                        <td><input type="text" name="enzona_configuracion_merchantUUID" id="merchantuuid"
-                                value="<?php echo esc_attr(get_option('enzona_configuracion_merchantUUID')); ?>"
-                                class="regular-text"></td>
-                    </tr>
+                    <div>
+                        <h3 for="enzona_configuracion_variable_1">Access Token
+                        </h3>
+                        <input type="text" name="enzona_configuracion_accessToken" id="accesstoken"
+                            value="<?php echo esc_attr(get_option('enzona_configuracion_accessToken')); ?>"
+                            class="regular-text">
+
+
+                        <h3 for="enzona_configuracion_variable_2">Merchant UUID
+                        </h3>
+                        <input type="text" name="enzona_configuracion_merchantUUID" id="merchantuuid"
+                            value="<?php echo esc_attr(get_option('enzona_configuracion_merchantUUID')); ?>"
+                            class="regular-text">
+
+                    </div>
+
 
                 </tbody>
             </table>
