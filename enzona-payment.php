@@ -13,11 +13,11 @@
  * WC tested up to: 7.5.1
  */
 
-require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
+require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 $is_localhost = false;
 if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
     $is_localhost = true;
