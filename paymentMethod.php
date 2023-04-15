@@ -213,7 +213,6 @@ function handle_payment_callback()
         $order_id = intval($result['invoice_number']);
         $order = wc_get_order($order_id);
         $thank_you_page_url = $order->get_checkout_order_received_url();
-        echo json_encode($result, JSON_PRETTY_PRINT);
 
         if ($status == 1116) {
             $order->update_status('completed', 'Transaction uuid: ' . $_GET['transaction_uuid']);
